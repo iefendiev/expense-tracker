@@ -1,9 +1,10 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../context/Context';
 import { TrashIcon } from '@heroicons/react/solid';
 
 const History = () => {
   const { tracks, setTracks } = useContext(Context);
+  const [items, setItems] = useState([]);
 
   const deleteTrack = (item) => {
     const newTracks = tracks.filter((track) => track !== item);
@@ -12,11 +13,14 @@ const History = () => {
   };
 
   useEffect(() => {
-    const trackItems = JSON.parse(window.localStorage.getItem('Tracks'));
-    if (trackItems) {
-      setTracks(trackItems);
+    setItems(JSON.parse(window.localStorage.getItem('Tracks')));
+  }, []);
+
+  useEffect(() => {
+    if (items) {
+      setTracks(items);
     }
-  }, [setTracks]);
+  }, [items, setTracks]);
 
   return (
     <>

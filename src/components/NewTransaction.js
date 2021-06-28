@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Context } from '../context/Context';
 
 const NewTransaction = () => {
@@ -9,10 +9,13 @@ const NewTransaction = () => {
   const handleClick = (e) => {
     e.preventDefault();
     setTracks([...tracks, { title, value }]);
-    window.localStorage.setItem('Tracks', JSON.stringify(tracks));
     setValue('');
     setTitle('');
   };
+
+  useEffect(() => {
+    window.localStorage.setItem('Tracks', JSON.stringify(tracks));
+  }, [tracks]);
 
   return (
     <>
