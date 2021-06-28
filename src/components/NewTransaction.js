@@ -9,6 +9,7 @@ const NewTransaction = () => {
   const handleClick = (e) => {
     e.preventDefault();
     setTracks([...tracks, { title, value }]);
+    window.localStorage.setItem('Tracks', JSON.stringify(tracks));
     setValue('');
     setTitle('');
   };
@@ -44,7 +45,7 @@ const NewTransaction = () => {
         <button
           type="submit"
           onClick={(e) => handleClick(e)}
-          className="bg-purple-500 hover:bg-purple-700 text-white font-semibold py-2 my-4 px-4 w-full text-xs"
+          className="bg-purple-500 hover:bg-purple-700 text-white font-semibold shadow-lg py-2 my-4 px-4 w-full text-xs"
         >
           Add Transaction
         </button>

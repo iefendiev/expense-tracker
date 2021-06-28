@@ -28,9 +28,7 @@ const Balance = () => {
     return incomes.reduce(reducer, 0);
   };
 
-  const calculateBalance = () => {
-    return calculateExpenses() + calculateIncomes();
-  };
+  const calculateBalance = () => calculateExpenses() + calculateIncomes();
 
   return (
     <>
